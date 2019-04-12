@@ -12,11 +12,10 @@ class Server {
         $file = fopen($client . ".txt", "r");
         $content = fgets($file, 4096);
         
-        var_dump($content);
         if ($content == "Hello world") {
-            echo "Success";
+            echo "Success le ficher de log contient Hello world";
         } else {
-            echo "Echec";
+            echo "NOT FOUND";
         }
         fclose($file);
     }
@@ -41,5 +40,17 @@ $server = new server;
 $client = new client;
 $name = "log";
 $client->send($name,'Hello world');
+
+echo date('h:i:s') . "\n";
+echo "Client >> Hello world";
+echo '<br><br>';
+
+
+echo 'Envoi du message.....';
+echo '<br><br>';
+
+sleep(5);
+
+echo date('h:i:s') . ": serveur >>  ";
 $server->receive($name);
 
